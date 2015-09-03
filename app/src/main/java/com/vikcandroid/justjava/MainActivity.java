@@ -14,6 +14,10 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
 
+    // Initialize variable to hold quantity
+    // This is a global variable
+    int quantity = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the plus button is clicked/touched
      */
     public void increment(View view) {
-        // Initialize variable to hold quantity
-        int quantity = 2;
 
         quantity = quantity + 1;
 
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the minus button is clicked/touched
      */
     public void decrement(View view) {
-        int quantity = 2;
+        // int quantity = 2; The variable was local to this function before, I killed it :D
 
         quantity = quantity - 1;
 
@@ -47,10 +49,6 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked
      */
     public void submitOrder(View view) {
-        // Initialize variable to hold number of cups ordered
-        int quantity = 5;
-
-        display(quantity);
         displayPrice(quantity * 5);
     }
 
