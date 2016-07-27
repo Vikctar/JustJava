@@ -49,12 +49,10 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         if (quantity >= 0) {
-            int price = quantity * 5;
+            int price = calculatePrice();
             String priceMessage = "Total: $" + price;
             priceMessage = priceMessage + "\nThank you";
             displayPrice(priceMessage);
-
-            calculatePrice();
         } else {
             Toast.makeText(getApplicationContext(), "quantity cannot be a negative", Toast.LENGTH_LONG).show();
         }
@@ -63,9 +61,11 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Calculates the price of the order
      *
+     * @return total price
      */
-    private void calculatePrice() {
+    private int calculatePrice() {
         int price = quantity * 5;
+        return price;
     }
 
     /**
