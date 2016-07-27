@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             priceMessage = priceMessage + "\nThank you";
             displayPrice(priceMessage);
 
-            calculatePrice(quantity, 10);
+            calculatePrice();
         } else {
             Toast.makeText(getApplicationContext(), "quantity cannot be a negative", Toast.LENGTH_LONG).show();
         }
@@ -63,11 +63,9 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Calculates the price of the order
      *
-     * @param quantity is the number of cups of coffee ordered
-     * @param pricePerCup is the price of one cup of coffee
      */
-    private void calculatePrice(int quantity, int pricePerCup) {
-        int price = quantity * pricePerCup;
+    private void calculatePrice() {
+        int price = quantity * 5;
     }
 
     /**
