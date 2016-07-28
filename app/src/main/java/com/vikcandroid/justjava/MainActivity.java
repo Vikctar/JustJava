@@ -50,9 +50,8 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
         if (quantity >= 0) {
             int price = calculatePrice();
-            String priceMessage = "Total: $" + price;
-            priceMessage = priceMessage + "\nThank you";
-            displayPrice(priceMessage);
+            String priceMessage = createOrderSummary(price);
+            displayMessage(priceMessage);
         } else {
             Toast.makeText(getApplicationContext(), "quantity cannot be a negative", Toast.LENGTH_LONG).show();
         }
@@ -64,8 +63,20 @@ public class MainActivity extends AppCompatActivity {
      * @return total price
      */
     private int calculatePrice() {
-        int price = quantity * 5;
-        return price;
+        return quantity * 5;
+    }
+
+    /**
+     * Create summary of the order
+     * @param price of the order
+     * @return text summary
+     */
+    private String createOrderSummary(int price) {
+        String priceMessage = "Name: Lucia Musau\n";
+        priceMessage = priceMessage + "Quantity: " + quantity + "\n";
+        priceMessage = priceMessage + "Total: $" + price;
+        priceMessage = priceMessage + "\nThank you!";
+        return priceMessage;
     }
 
     /**
@@ -81,11 +92,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the given price on the screen
      */
-    private void displayPrice(String message) {
-        TextView priceTextView = (TextView) findViewById(
-                R.id.price_text_view
-        );
-        priceTextView.setText(message);
+    private void displayMessage(String message) {
+        TextView orderSummaryTextView = (TextView) findViewById(
+                R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
     }
 
     @Override

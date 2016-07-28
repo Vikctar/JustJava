@@ -3,4 +3,9 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="order">ORDER</string>
+    <string name="increment">+</string>
+    <string name="decrement">-</string>
+    <string name="quantity">Quantity</string>
 </resources>
