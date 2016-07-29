@@ -8,4 +8,6 @@
     <string name="increment">+</string>
     <string name="decrement">-</string>
     <string name="quantity">Quantity</string>
+    <string name="toppings">Toppings</string>
+    <string name="whipped_cream">Whipped Cream</string>
 </resources>
