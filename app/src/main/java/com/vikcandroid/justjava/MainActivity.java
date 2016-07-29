@@ -2,9 +2,11 @@ package com.vikcandroid.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,8 +51,16 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         if (quantity >= 0) {
+            // Find the check box in the view hierarchy
+            CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream);
+
+            // store the checked state in a boolean
+            boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+            // Log the bastard
+            Log.v("MainActivity", "Has whipped cream? " + hasWhippedCream);
+
             int price = calculatePrice();
-            String priceMessage = createOrderSummary(price);
+            String priceMessage = createOrderSummary(price, hasWhippedCream);
             displayMessage(priceMessage);
         } else {
             Toast.makeText(getApplicationContext(), "quantity cannot be a negative", Toast.LENGTH_LONG).show();
@@ -69,10 +79,12 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Create summary of the order
      * @param price of the order
+     * @param addWhippedCream checks whether or not the user wants whipped cream topping
      * @return text summary
      */
-    private String createOrderSummary(int price) {
+    private String createOrderSummary(int price, boolean addWhippedCream) {
         String priceMessage = "Name: Lucia Musau\n";
+        priceMessage += "Add whipped cream? " + addWhippedCream + "\n";
         priceMessage = priceMessage + "Quantity: " + quantity + "\n";
         priceMessage = priceMessage + "Total: $" + price;
         priceMessage = priceMessage + "\nThank you!";
