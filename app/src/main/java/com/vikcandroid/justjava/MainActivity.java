@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         if (quantity >= 0) {
-            EditText editText = (EditText) findViewById(R.id.edit_text_name);
-            String name = editText.getText().toString();
+            EditText nameField = (EditText) findViewById(R.id.edit_text_name);
+            String name = nameField.getText().toString();
 
             // Find the check boxes in the view hierarchy
             CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream);
