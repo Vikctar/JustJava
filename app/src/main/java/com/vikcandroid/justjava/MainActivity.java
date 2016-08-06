@@ -1,5 +1,7 @@
 package com.vikcandroid.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -78,6 +80,17 @@ public class MainActivity extends AppCompatActivity {
 
             int price = calculatePrice(hasWhippedCream, hasChocolate);
             String priceMessage = createOrderSummary(name, price, hasWhippedCream, hasChocolate);
+
+            // send the order summary as an email
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+            intent.putExtra(Intent.EXTRA_EMAIL, "support@bpg.co.ke");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Your order");
+            intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
+
             displayMessage(priceMessage);
         } else if (quantity == 0) {
             Toast.makeText(this, "Please order something", Toast.LENGTH_SHORT).show();
