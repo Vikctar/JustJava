@@ -85,13 +85,12 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
             intent.setData(Uri.parse("mailto:")); // only email apps should handle this
             intent.putExtra(Intent.EXTRA_EMAIL, "support@bpg.co.ke");
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Your order");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + name);
             intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
             if (intent.resolveActivity(getPackageManager()) != null) {
                 startActivity(intent);
             }
 
-            displayMessage(priceMessage);
         } else if (quantity == 0) {
             Toast.makeText(this, "Please order something", Toast.LENGTH_SHORT).show();
         } else {
@@ -151,15 +150,6 @@ public class MainActivity extends AppCompatActivity {
                 R.id.quantity_text_view
         );
         quantityTextView.setText("" + numberOfCoffees);
-    }
-
-    /**
-     * This method displays the given price on the screen
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(
-                R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
     }
 
     @Override
